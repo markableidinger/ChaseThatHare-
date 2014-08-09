@@ -38,7 +38,7 @@
   </body>
 
 <script type="text/javascript">
-
+  // Creates functions used to calculate position.
   function Animal(name, speed, focus){
     this.speed = speed;
     this.focus = focus;
@@ -51,7 +51,7 @@
       }
     }
 
-
+  // Creating variables necessary to bring user input into JavaScript.
   var secondPart = function(){
     var turtleName = document.getElementById('turtle_name').value;
     var rabbitName = document.getElementById('rabbit_name').value;
@@ -65,7 +65,7 @@
     var tortoise = new Animal(turtleName, turtleSpeed, turtleFocus);
     var hare = new Animal(rabbitName, rabbitSpeed, rabbitFocus);
 
-
+    // Executing the race.
     while (tortoise.position < 100 && hare.position < 100){
       run(tortoise);
       run(hare);
