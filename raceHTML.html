@@ -4,38 +4,89 @@
   <head>
     <title itemprop="name">Chase That Hare!</title>
     <link rel="shortcut icon" href="images/raceOriginal.jpg" />
+
   </head>
 
   <body background="images/race.jpg">
     <h1><font size="14"><center>CHASE THAT HARE!</center></font></h1>
+    <h3><center>Welcome to the 100 mile race! Press GO to start!</center></h3>
+    <h4><center>Choose values between 0 - 10</center></h4>
+    <br>
     <h3 itemprop="animal"><center>Tortoise</center></h3>
     <strong>
     <form>
-      <center>Name: <input type="text" name="name"><br></center>
-      <center>Focus: <input type="text" name="focus"><br></center>
-      <center>Speed: <input type="text" name="speed"><br></center>
+      <center>Name: <input type="text" id="turtle_name"/></center>
+      <center>Speed: <input type="text" id="turtle_speed"/></center>
+      <center>Focus: <input type="text" id="turtle_focus"/></center>
     </form>
     </strong>
     <h3><center>Hare</center></h3>
     <strong>
     <form>
-      <center>Name: <input type="text" name="name"><br></center>
-      <center>Focus: <input type="text" name="focus"><br></center>
-      <center>Speed: <input type="text" name="speed"><br></center>
+      <center>Name: <input type="text" id="rabbit_name"></center>
+      <center>Speed: <input type="text" id="rabbit_speed"></center>
+      <center>Focus: <input type="text" id="rabbit_focus"></center>
     </form>
     </strong>
     <br>
-    <center><button>Let's Go!</button></center>
+      <center><input type="button" value="GO!" onclick="secondPart();"/></center>
     <br>
     <h2><center>Results!</center></h2>
-    <center><div data-alert class="alert-box">
+    <center><div data-alert class="alert-box" id="results">
       <!-- Results -->
-      <a href="#" class="close">next</a>
     </center></div>
     <br>
-    <center><button>Race Again</button></center>
-
-    <script src="raceScript.js"></script>
   </body>
+
+<script type="text/javascript">
+
+  function Animal(name, speed, focus){
+    this.speed = speed;
+    this.focus = focus;
+    this.position = 0;
+    this.name = name;
+  }
+  function run(animal){
+      if ((Math.random() * 10) < animal.focus){
+        animal.position = animal.position + animal.speed;
+      }
+    }
+
+//Assigning user input to variables.
+
+
+//Attempting to make function
+
+var secondPart = function(){
+  var turtleName = document.getElementById('turtle_name').value;
+  var rabbitName = document.getElementById('rabbit_name').value;
+  var turtleSpeed = parseInt(document.getElementById('turtle_speed').value);
+  var rabbitSpeed = parseInt(document.getElementById('rabbit_speed').value);
+  var turtleFocus = parseInt(document.getElementById('turtle_focus').value);
+  var rabbitFocus = parseInt(document.getElementById('rabbit_focus').value);
+
+  var raceResults = document.getElementById('results');
+
+  var tortoise = new Animal(turtleName, turtleSpeed, turtleFocus);
+  var hare = new Animal(rabbitName, rabbitSpeed, rabbitFocus);
+
+
+    while (tortoise.position < 100 && hare.position < 100){
+      run(tortoise);
+      run(hare);
+      raceResults.innerHTML = "At this point in the race, " + tortoise.name + " is at " + tortoise.position + ", and " + hare.name + " is at " + hare.position + ".\n";
+    }
+
+    if (tortoise.position >= 100 && hare.position < 100){
+      raceResults.innerHTML = raceResults.innerHTML + tortoise.name + " wins the race!  Congratulations!";
+    }
+    else if (hare.position >= 100 && tortoise.position < 100){
+      raceResults.innerHTML = raceResults.innerHTML + hare.name + " wins the race!  Congratulations!";
+    }
+    else if (hare.position >= 100 && tortoise.position >= 100){
+      raceResults.innerHTML = raceResults.innerHTML + "It's a tie!";
+    }
+};
+</script>
 
 </html>
