@@ -33,7 +33,6 @@
     <br>
     <h2><center>Results!</center></h2>
     <center><div data-alert class="alert-box" id="results">
-      <!-- Results -->
     </center></div>
     <br>
   </body>
@@ -52,23 +51,19 @@
       }
     }
 
-//Assigning user input to variables.
 
+  var secondPart = function(){
+    var turtleName = document.getElementById('turtle_name').value;
+    var rabbitName = document.getElementById('rabbit_name').value;
+    var turtleSpeed = parseInt(document.getElementById('turtle_speed').value);
+    var rabbitSpeed = parseInt(document.getElementById('rabbit_speed').value);
+    var turtleFocus = parseInt(document.getElementById('turtle_focus').value);
+    var rabbitFocus = parseInt(document.getElementById('rabbit_focus').value);
 
-//Attempting to make function
+    var raceResults = document.getElementById('results');
 
-var secondPart = function(){
-  var turtleName = document.getElementById('turtle_name').value;
-  var rabbitName = document.getElementById('rabbit_name').value;
-  var turtleSpeed = parseInt(document.getElementById('turtle_speed').value);
-  var rabbitSpeed = parseInt(document.getElementById('rabbit_speed').value);
-  var turtleFocus = parseInt(document.getElementById('turtle_focus').value);
-  var rabbitFocus = parseInt(document.getElementById('rabbit_focus').value);
-
-  var raceResults = document.getElementById('results');
-
-  var tortoise = new Animal(turtleName, turtleSpeed, turtleFocus);
-  var hare = new Animal(rabbitName, rabbitSpeed, rabbitFocus);
+    var tortoise = new Animal(turtleName, turtleSpeed, turtleFocus);
+    var hare = new Animal(rabbitName, rabbitSpeed, rabbitFocus);
 
 
     while (tortoise.position < 100 && hare.position < 100){
@@ -86,7 +81,7 @@ var secondPart = function(){
     else if (hare.position >= 100 && tortoise.position >= 100){
       raceResults.innerHTML = raceResults.innerHTML + "It's a tie!";
     }
-};
+  };
 </script>
 
 </html>
