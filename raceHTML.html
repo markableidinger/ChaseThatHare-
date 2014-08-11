@@ -3,39 +3,40 @@
 
   <head>
     <title itemprop="name">Chase That Hare!</title>
-    <link rel="shortcut icon" href="images/raceOriginal.jpg" />
-
+    <link rel='stylesheet' type="text/css" href='normalize.css'></style>
+    <link rel='stylesheet' type="text/css" href='raceStyle.css'></style>
   </head>
 
-  <body background="images/race.jpg">
-    <h1><font size="14"><center>CHASE THAT HARE!</center></font></h1>
-    <h3><center>Welcome to the 100 mile race! Press GO to start!</center></h3>
-    <h4><center>Choose values between 0 - 10</center></h4>
-    <br>
-    <h3 itemprop="animal"><center>Tortoise</center></h3>
-    <strong>
-    <form>
-      <center>Name: <input type="text" id="turtle_name"/></center>
-      <center>Speed: <input type="text" id="turtle_speed"/></center>
-      <center>Focus: <input type="text" id="turtle_focus"/></center>
-    </form>
-    </strong>
-    <h3><center>Hare</center></h3>
-    <strong>
-    <form>
-      <center>Name: <input type="text" id="rabbit_name"></center>
-      <center>Speed: <input type="text" id="rabbit_speed"></center>
-      <center>Focus: <input type="text" id="rabbit_focus"></center>
-    </form>
-    </strong>
-    <br>
-      <center><input type="button" value="GO!" onclick="secondPart();"/></center>
-    <br>
-    <h2><center>Results!</center></h2>
-    <center><div data-alert class="alert-box" id="results">
-      <!-- Results -->
-    </center></div>
-    <br>
+  <body>
+    <div id='topDiv'>
+      <h1 id='header'>CHASE THAT HARE</h1>
+      <h3>Welcome to the 100 mile race</h3>
+      <h3>Enter values from 1-10, and press GO to start</h3>
+    </div>
+    <div id='wrapper'>
+      <div id='leftInput' class='inputBox'>
+      <h3>Tortoise</h3>
+        <ul>
+          <li>Name: <input type="text" placeholder='Yurtle' id="turtle_name"/></li>
+          <li>Speed: <input type="text" placeholder='1-10' id="turtle_speed"/></li>
+          <li>Focus: <input type="text" placeholder='1-10' id="turtle_focus"/></li>
+        </ul>
+      </div>
+      <div id='rightInput' class='inputBox'>
+      <h3>Hare</h3>
+        <ul>
+          <li>Name: <input type="text" placeholder='Wabbit' id="rabbit_name"></li>
+          <li>Speed: <input type="text" placeholder='1-10' id="rabbit_speed"></li>
+          <li>Focus: <input type="text" placeholder='1-10' id="rabbit_focus"></li>
+        </ul>
+      </div>
+      <div id='buttonDiv'>
+        <input type="button" value="GO!" onclick="secondPart();" id='button'/>
+      </div>
+    </div>
+
+    <div data-alert class="alert-box" id='results'>
+    </div>
   </body>
 
 <script type="text/javascript">
@@ -74,17 +75,17 @@ var secondPart = function(){
     while (tortoise.position < 100 && hare.position < 100){
       run(tortoise);
       run(hare);
-      raceResults.innerHTML = "At this point in the race, " + tortoise.name + " is at " + tortoise.position + ", and " + hare.name + " is at " + hare.position + ".\n";
+      raceResults.innerHTML = "<h2>Results:</h2><p>At the end of the race, " + tortoise.name + " is at " + tortoise.position + ", and " + hare.name + " is at " + hare.position + "</p>";
     }
 
     if (tortoise.position >= 100 && hare.position < 100){
-      raceResults.innerHTML = raceResults.innerHTML + tortoise.name + " wins the race!  Congratulations!";
+      raceResults.innerHTML = '<p>'+raceResults.innerHTML + tortoise.name + " wins the race!  Congratulations!</p>";
     }
     else if (hare.position >= 100 && tortoise.position < 100){
-      raceResults.innerHTML = raceResults.innerHTML + hare.name + " wins the race!  Congratulations!";
+      raceResults.innerHTML = '<p>'+raceResults.innerHTML + hare.name + " wins the race!  Congratulations!</p>";
     }
     else if (hare.position >= 100 && tortoise.position >= 100){
-      raceResults.innerHTML = raceResults.innerHTML + "It's a tie!";
+      raceResults.innerHTML = '<p>'+raceResults.innerHTML + "It's a tie!</p>";
     }
 };
 </script>
